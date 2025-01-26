@@ -1,0 +1,7 @@
+opencv-python>=4.8.0
+numpy>=1.24.3
+PyYAML>=6.0.1
+websockets>=11.0.3
+pyaudio>=0.2.13
+pygame>=2.5.2
+python-picamera2>=0.3.12
