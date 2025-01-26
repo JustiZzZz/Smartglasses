@@ -1,0 +1,26 @@
+api:
+  openai_key: "sk-proj-LvC2PoRa6ayhtkWTE4HLT3BlbkFJRLRhPkhO2hUUYwfcJMTb"
+yandex:
+  folder_id: "b1glvvidunl17ualfvoi"
+audio:
+  format: "paInt16"
+  channels: 1
+  rate: 16000
+  chunk: 4096
+  device_id: 1
+video:
+  frame_width: 640
+  frame_height: 480
+  fps: 30
+  camera_id: 0
+gesture:
+  max_hands: 1
+  min_detection_confidence: 0.7
+models:
+  speech_to_text: "general"
+  text_to_speech: "kirill"
+  vision: "gpt-4o"
+server:
+  host: "192.168.72.206"
+  port: 8765
+  raspberry_pi_ip: "192.168.72.1"
