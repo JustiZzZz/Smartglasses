@@ -26,7 +26,6 @@ class SpeechService:
             )
             stub = stt_service_pb2_grpc.RecognizerStub(channel)
 
-            # Настройка распознавания
             recognize_options = stt_pb2.StreamingOptions(
                 recognition_model=stt_pb2.RecognitionModelOptions(
                     audio_format=stt_pb2.AudioFormatOptions(
@@ -48,7 +47,6 @@ class SpeechService:
                 ('x-folder-id', self.config['yandex']['folder_id'])
             )
 
-            # Отправка аудиоданных
             responses = stub.RecognizeStreaming(
                 self._audio_stream_generator(audio_data, recognize_options),
                 metadata=metadata
@@ -70,12 +68,10 @@ class SpeechService:
 
     def _audio_stream_generator(self, audio_data, recognize_options):
         try:
-            # Отправляем настройки
             yield stt_pb2.StreamingRequest(
                 session_options=recognize_options
             )
 
-            # Отправляем аудиоданные
             for chunk in audio_data:
                 if chunk:
                     yield stt_pb2.StreamingRequest(
@@ -87,7 +83,6 @@ class SpeechService:
             raise
 
     async def synthesize(self, text):
-        """Синтез речи"""
         try:
             request = tts_pb2.UtteranceSynthesisRequest(
                 text=text,
