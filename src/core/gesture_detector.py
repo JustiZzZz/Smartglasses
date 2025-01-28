@@ -24,21 +24,17 @@ class GestureDetector:
                 return False
 
             for hand_landmarks in results.multi_hand_landmarks:
-                # Координаты ключевых точек большого пальца
                 thumb_tip = hand_landmarks.landmark[4]
                 thumb_ip = hand_landmarks.landmark[3]
                 thumb_mcp = hand_landmarks.landmark[2]
 
-                # Координаты кончиков других пальцев
                 index_tip = hand_landmarks.landmark[8]
                 middle_tip = hand_landmarks.landmark[12]
                 ring_tip = hand_landmarks.landmark[16]
                 pinky_tip = hand_landmarks.landmark[20]
 
-                # Проверка положения большого пальца (вверх)
                 thumb_up = thumb_tip.y < thumb_ip.y < thumb_mcp.y
 
-                # Проверка, что остальные пальцы согнуты
                 other_fingers_down = all([
                     index_tip.y > thumb_mcp.y,
                     middle_tip.y > thumb_mcp.y,
