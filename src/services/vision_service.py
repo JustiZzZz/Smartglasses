@@ -11,7 +11,6 @@ class VisionService:
 
     async def analyze_frame(self, frame: np.ndarray) -> dict:
         try:
-            # Конвертируем numpy array в base64
             _, buffer = cv2.imencode('.jpg', frame)
             frame_base64 = base64.b64encode(buffer).decode('utf-8')
 
