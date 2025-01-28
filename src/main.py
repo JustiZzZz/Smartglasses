@@ -31,28 +31,22 @@ class Server:
                 data = json.loads(message)
 
                 if data['type'] == 'video':
-                    # Decode video frame
                     frame_data = base64.b64decode(data['data'])
                     nparr = np.frombuffer(frame_data, np.uint8)
                     frame = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
 
-                    # Check for thumbs up gesture
                     if self.gesture_detector.detect_thumbs_up(frame):
                         await websocket.send(json.dumps({'type': 'start_recording'}))
                         self.recording_clients.add(websocket)
 
                 elif data['type'] == 'audio' and websocket in self.recording_clients:
-                    # Process audio for command detection
                     audio_data = base64.b64decode(data['data'])
                     if await self.speech_service.detect_command(audio_data, "опиши"):
-                        # Capture and analyze frames
                         frames = await self.vision_service.analyze_frames(frame)
                         description = frames['description']
 
-                        # Synthesize speech
                         audio_response = await self.speech_service.synthesize(description)
 
-                        # Send audio response back to client
                         await websocket.send(json.dumps({
                             'type': 'audio_response',
                             'data': base64.b64encode(audio_response).decode('utf-8')
