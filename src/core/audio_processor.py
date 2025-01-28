@@ -44,12 +44,10 @@ class AudioProcessor:
 
     async def _play_audio_bluetooth(self, audio_segment: AudioSegment):
         try:
-            # Здесь можно добавить код для Bluetooth-воспроизведения
-            # при необходимости использования Bluetooth
+            # я устала
             pass
         except Exception as e:
             logging.error(f"Bluetooth playback failed: {e}")
-            # Fallback to default playback
             await self._play_audio_default(audio_segment)
 
     async def _play_audio_default(self, audio_segment: AudioSegment):
