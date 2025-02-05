@@ -1,7 +1,7 @@
 api:
-  openai_key: "sk-proj-LvC2PoRa6ayhtkWTE4HLT3BlbkFJRLRhPkhO2hUUYwfcJMTb"
+  openai_key: ""
 yandex:
-  folder_id: "b1glvvidunl17ualfvoi"
+  folder_id: ""
 audio:
   format: "paInt16"
   channels: 1
