@@ -24,8 +24,8 @@ CHANNELS = 1
 RATE = 16000
 CHUNK = 4096
 DEVICE_ID = 1
-FOLDER_ID = "b1glvvidunl17ualfvoi"
-OPENAI_API_KEY = "sk-proj-LvC2PoRa6ayhtkWTE4HLT3BlbkFJRLRhPkhO2hUUYwfcJMTb"
+FOLDER_ID = ""
+OPENAI_API_KEY = ""
 
 def get_yc_token():
     try:
